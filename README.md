@@ -1,6 +1,14 @@
-# NOIR Barber Studio — Portfolio Website + Booking & Admin Demo (v3)
+# NOIR Barber Studio — Portfolio Website + Booking & Admin Demo (v3.1 — booking time fix)
 
 A fictional, premium barber-studio website designed as a portfolio demonstration. NOIR is not a real barbershop. Photographs are inspiration images, and sample testimonials, services, prices and staff are fictitious.
+
+## v3.1 booking time picker fix
+
+- **CHOOSE YOUR TIME** is now an actual visible dropdown beside the date; choose a value to book.
+- **VIEW ALL TIME SLOTS** expands an optional grid of clickable times.
+- On days that are closed or fully booked, a visible message explains why no times appear.
+- **NEXT AVAILABLE DAY** jumps to another day with appointments.
+- All booking and admin features from v3 remain; still a browser-only demo with no actual email.
 
 ## What's included
 

@@ -9,7 +9,7 @@
   const modal = $('#booking-modal');
   const form = $('#booking-form');
   const dateInput = $('#booking-date');
-  const timeInput = $('#booking-time');
+  const timeInput = $('#booking-time-select');
   const error = $('#form-error');
   const success = $('#booking-success');
   const flightScene = $('#flight-scene');
@@ -19,7 +19,6 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let deliveryTimer = null;
   const serviceInput = $('#booking-service');
-  const schedule = ['10:00', '11:30', '13:00', '14:30', '16:00', '17:30'];
 
   function updateScroll() {
     const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -88,6 +87,8 @@
   const barberInput = $('#booking-form select[name="barber"]');
   const timeGrid = $('#time-grid');
   const timeNote = $('#time-note');
+  const showTimeGrid = $('#show-time-grid');
+  const nextOpenDay = $('#next-open-day');
   const hoursStatus = $('#hours-status');
   const hoursList = $('#public-hours-list');
   const serviceDuration = () => store.SERVICES[serviceInput.value]?.minutes || 30;
@@ -97,9 +98,17 @@
   }
   dateInput.min = store.dateKey(new Date());
   dateInput.max = futureDate(60);
-  function firstOpenDate() {
-    for (let i=0;i<8;i++) { const d=futureDate(i); if (store.slotOptions(d, serviceInput.value, barberInput.value).some(s=>s.available)) return d; }
-    return futureDate(0);
+  function firstOpenDate(startDate = new Date(), skipStart = false) {
+    const base = new Date(startDate);
+    base.setHours(12, 0, 0, 0); // avoid DST boundary shifts
+    const first = skipStart ? 1 : 0;
+    for (let i = first; i <= 60; i++) {
+      const day = new Date(base); day.setDate(base.getDate() + i);
+      const d = store.dateKey(day);
+      if (d > dateInput.max) break;
+      if (d >= dateInput.min && store.slotOptions(d, serviceInput.value, barberInput.value).some(s => s.available)) return d;
+    }
+    return null;
   }
 
   function renderHours() {
@@ -124,35 +133,54 @@
   }
 
   function renderSlots() {
-    const selected=timeInput.value;
-    const slots=store.slotOptions(dateInput.value,serviceInput.value,barberInput.value);
+    const selected = timeInput.value;
+    const slots = store.slotOptions(dateInput.value, serviceInput.value, barberInput.value);
+    const availableSlots = slots.filter(slot => slot.available);
     timeGrid.replaceChildren();
-    let available=0;
+    timeInput.replaceChildren();
+    const placeholder = document.createElement('option');
+    placeholder.value = '';
+    placeholder.textContent = availableSlots.length ? 'Select an available time…' : 'No times on this date — choose another day';
+    timeInput.append(placeholder);
+    availableSlots.forEach(slot => {
+      const option = document.createElement('option');
+      option.value = slot.time;
+      option.textContent = slot.time;
+      timeInput.append(option);
+    });
+    if (availableSlots.some(slot => slot.time === selected)) timeInput.value = selected;
+    else timeInput.value = '';
     slots.forEach(slot => {
-      const b=document.createElement('button'); b.type='button'; b.className='time-slot';
-      b.textContent=slot.time; b.dataset.time=slot.time; b.disabled=!slot.available;
-      b.setAttribute('aria-pressed',String(slot.available && selected===slot.time));
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'time-slot';
+      b.textContent = slot.time; b.dataset.time = slot.time; b.disabled = !slot.available;
+      b.setAttribute('aria-pressed', String(slot.available && timeInput.value === slot.time));
       if (slot.available) {
-        available++;
-        if (selected===slot.time) b.classList.add('active');
-        b.addEventListener('click',() => {
-          timeInput.value=slot.time; error.textContent='';
-          $$('.time-slot').forEach(el=>{el.classList.toggle('active',el===b);el.setAttribute('aria-pressed',String(el===b));});
+        if (timeInput.value === slot.time) b.classList.add('active');
+        b.addEventListener('click', () => {
+          timeInput.value = slot.time;
+          error.textContent = '';
+          $$('.time-slot').forEach(el => {
+            el.classList.toggle('active', el === b);
+            el.setAttribute('aria-pressed', String(el === b));
+          });
         });
       }
       timeGrid.append(b);
     });
-    if (!slots.some(s=>s.available && s.time===selected)) timeInput.value='';
-    const h=store.dayHours(dateInput.value);
-    if (!h) timeNote.textContent='Choose a valid date within the next 60 days.';
-    else if (h.closed) timeNote.textContent='The studio is closed on this day. Please choose another date.';
-    else if (!available) timeNote.textContent='No time slots available for this combination. Try another date, service or barber.';
-    else timeNote.textContent=`${available} time${available===1?'':'s'} available · ${serviceDuration()} min service · demo only`;
+    const h = store.dayHours(dateInput.value);
+    if (!h) timeNote.textContent = 'Choose a date within the next 60 days.';
+    else if (h.closed) timeNote.textContent = 'Closed on this date. Click “Next available day” to choose another date.';
+    else if (!availableSlots.length) timeNote.textContent = 'No slots available. Try another date, service or barber.';
+    else timeNote.textContent = `${availableSlots.length} available times · ${serviceDuration()} min service · demo only`;
+    timeInput.disabled = availableSlots.length === 0;
+    showTimeGrid.disabled = slots.length === 0;
+    nextOpenDay.disabled = !firstOpenDate(store.parseDate(dateInput.value) || new Date(), true);
   }
   function openBooking(service) {
     form.hidden=false; success.hidden=true; resetDelivery(); error.textContent='';
     if (service && store.SERVICES[service]) serviceInput.value=service;
-    if (!dateInput.value || dateInput.value<dateInput.min || !store.dayHours(dateInput.value)) dateInput.value=firstOpenDate();
+    if (!dateInput.value || dateInput.value < dateInput.min || dateInput.value > dateInput.max) dateInput.value = firstOpenDate() || dateInput.min;
     renderSlots();
     if (typeof modal.showModal==='function') modal.showModal(); else modal.setAttribute('open','');
     document.body.classList.add('modal-open');
@@ -168,7 +196,25 @@
   $('#close-booking').addEventListener('click',closeBooking);
   modal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
   modal.addEventListener('click',e=>{if(e.target===modal)closeBooking();});
-  [serviceInput,barberInput,dateInput].forEach(el=>el.addEventListener('change',()=>{error.textContent='';renderSlots();}));
+  [serviceInput, barberInput, dateInput].forEach(el => el.addEventListener('change', () => { error.textContent = ''; renderSlots(); }));
+  timeInput.addEventListener('change', () => {
+    error.textContent = '';
+    $$('.time-slot').forEach(b => {
+      const active = b.dataset.time === timeInput.value;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-pressed', String(active));
+    });
+  });
+  showTimeGrid.addEventListener('click', () => {
+    const expanded = showTimeGrid.getAttribute('aria-expanded') === 'true';
+    showTimeGrid.setAttribute('aria-expanded', String(!expanded));
+    showTimeGrid.innerHTML = expanded ? 'VIEW ALL TIME SLOTS <span aria-hidden="true">⌄</span>' : 'HIDE TIME SLOTS <span aria-hidden="true">⌃</span>';
+    timeGrid.hidden = expanded;
+  });
+  nextOpenDay.addEventListener('click', () => {
+    const next = firstOpenDate(store.parseDate(dateInput.value) || new Date(), true);
+    if (next) { dateInput.value = next; renderSlots(); timeInput.focus(); }
+  });
 
   form.addEventListener('submit',e=>{
     e.preventDefault();
@@ -202,7 +248,7 @@
     deliveryStatus.textContent='Your demo appointment is now visible in the local admin dashboard.';
   }
   $('#book-another').addEventListener('click',()=>{
-    form.reset();dateInput.value=firstOpenDate();timeInput.value='';form.hidden=false;success.hidden=true;
+    form.reset();dateInput.value=firstOpenDate() || dateInput.min;timeInput.value='';form.hidden=false;success.hidden=true;
     resetDelivery();error.textContent='';renderSlots();
   });
   window.addEventListener('storage',()=>{renderHours();if(modal.open && !form.hidden)renderSlots();});
