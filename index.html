@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#121411">
+  <meta name="description" content="NOIR Barber Studio — a premium barbering experience. Concept website and interactive booking demo.">
+  <title>NOIR — Barber Studio | The Art of Looking Sharp</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="progress-track" aria-hidden="true"><div id="progress-bar"></div></div>
+  <div class="ambient-cursor" aria-hidden="true"></div>
+  <div class="demo-label" title="This is a fictional concept website">PORTFOLIO CONCEPT <span>•</span> NOT A REAL BARBERSHOP</div>
+
+  <header class="site-header" id="site-header">
+    <a class="brand" href="#home" aria-label="NOIR Barber Studio — homepage"><span class="brand-symbol">N<span>.</span></span><span class="brand-name">NOIR <small>BARBER STUDIO</small></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#about">The studio</a><a href="#services">Services</a><a href="#work">Our work</a><a href="#reviews">Reviews</a>
+    </nav>
+    <div class="header-actions"><a class="nav-book magnetic" href="#booking">BOOK A SEAT <span aria-hidden="true">↗</span></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button></div>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#about">The studio</a><a href="#services">Services</a><a href="#work">Our work</a><a href="#reviews">Reviews</a><a href="#booking">Book a seat ↗</a></nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <div class="eyebrow reveal"><span class="small-line"></span> EST. 2026 <span class="dot-separator">✦</span> A DIFFERENT CUT</div>
+        <h1 class="hero-heading reveal">MORE THAN<br>A <em>HAIRCUT.</em><span class="hero-heading-last">A STATEMENT<span class="heading-period">.</span></span></h1>
+        <p class="hero-sub reveal">Sharp details. Timeless confidence. A modern barbershop for the ones who never settle for ordinary.</p>
+        <div class="hero-buttons reveal"><a class="button button-accent magnetic" href="#booking">BOOK YOUR EXPERIENCE <span aria-hidden="true">↗</span></a><a class="button-link" href="#work">EXPLORE THE STUDIO <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-bottom reveal"><div><span>01 / 04</span><div class="hero-steps" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i></div></div><span class="scroll-label">SCROLL TO DISCOVER <b>↓</b></span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-wrap"><img class="hero-photo" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1500&q=85" alt="Barber carefully styling a client's hair" fetchpriority="high"></div>
+        <span class="visual-top-label">THE ART OF GROOMING <span>↗</span></span>
+        <div class="hero-stamp" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="circle-text" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs><text><textPath href="#circle-text">CUT DIFFERENT • FEEL DIFFERENT • </textPath></text><path d="M44 62h32M60 46v32" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <div class="hero-index">N<span>º</span> 001 <span>—</span> SIGNATURE EXPERIENCE</div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Craft. Confidence. Character."><div class="marquee-track" aria-hidden="true"><span>YOUR STYLE. OUR CRAFT. <b>✳</b> MORE THAN A CUT. <b>✳</b> NEVER ORDINARY. <b>✳</b> </span><span>YOUR STYLE. OUR CRAFT. <b>✳</b> MORE THAN A CUT. <b>✳</b> NEVER ORDINARY. <b>✳</b> </span></div></div>
+
+    <section class="section intro" id="about">
+      <div class="section-kicker reveal"><span class="kicker-number">01 /</span> THE NOIR PHILOSOPHY</div>
+      <div class="intro-grid"><div class="intro-left reveal"><h2>BUILT FOR<br>THE <em>BOLD.</em></h2><div class="intro-image"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=85" alt="Classic barbershop interior" loading="lazy"><div class="image-corner">THE DETAILS<br>MATTER.</div></div></div>
+        <div class="intro-right reveal"><div class="intro-ornament">✳</div><h3>We don't just change how you look.<br><em>We change how you walk out.</em></h3><p>There's a difference between getting your hair cut and getting it right. We believe in the ritual. The precision. The moment you look in the mirror and just know.</p><p>Classic techniques meet a modern point of view. No shortcuts. No compromises. Just ridiculously good cuts.</p><a href="#services" class="text-arrow">DISCOVER OUR SERVICES <span>↗</span></a><div class="numbers"><div><strong data-count="12">12</strong><span>YEARS OF CRAFT*</span></div><div><strong data-count="100">100</strong><span>% ATTENTION TO DETAIL</span></div><div><strong data-count="1">1</strong><span>GOAL: YOUR BEST LOOK</span></div></div><small class="concept-note">*Illustrative portfolio content, not a verified business claim.</small></div></div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="section-kicker reveal"><span class="kicker-number">02 /</span> WHAT WE DO</div>
+      <div class="section-heading-row reveal"><h2>THE <em>SERVICES.</em></h2><p>Only the essentials.<br>Done exceptionally well.</p></div>
+      <div class="service-list">
+        <button class="service-row reveal" data-service="signature"><span class="service-number">01</span><span class="service-detail"><strong>THE SIGNATURE CUT</strong><small>Consultation · Precision cut · Style & finish</small></span><span class="service-price">€ 35</span><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" data-service="beard"><span class="service-number">02</span><span class="service-detail"><strong>BEARD SCULPT</strong><small>Hot towel · Shape & line-up · Beard oil</small></span><span class="service-price">€ 20</span><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" data-service="combo"><span class="service-number">03</span><span class="service-detail"><strong>THE FULL EXPERIENCE</strong><small>Signature cut · Beard sculpt · Hot towel</small></span><span class="service-price">€ 50</span><span class="service-arrow">↗</span></button>
+        <button class="service-row reveal" data-service="refresh"><span class="service-number">04</span><span class="service-detail"><strong>THE QUICK REFRESH</strong><small>Skin fade · Edge work · Finishing details</small></span><span class="service-price">€ 25</span><span class="service-arrow">↗</span></button>
+      </div>
+      <div class="service-note">* Demo prices shown for design purposes only. Click any service to try the booking flow.</div>
+    </section>
+
+    <section class="statement"><div class="statement-bg" aria-hidden="true"></div><p class="reveal">GREAT HAIR<br>ISN'T AN <em>ACCIDENT.</em></p><span class="reveal">IT'S NOIR. <span>✳</span></span></section>
+
+    <section class="section work" id="work">
+      <div class="section-kicker reveal"><span class="kicker-number">03 /</span> THE LOOKBOOK</div>
+      <div class="section-heading-row reveal"><h2>OUR <em>CRAFT.</em></h2><p>Different people. Different styles.<br>Same obsession with detail.</p></div>
+      <div class="gallery-grid">
+        <figure class="gallery-item large reveal"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1100&q=85" alt="Professional barber shaping a haircut" loading="lazy"><figcaption>01 <span>THE MODERN CLASSIC</span> ↗</figcaption></figure>
+        <figure class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1590540179852-2110a54f813a?auto=format&fit=crop&w=900&q=85" alt="Detailed barber service" loading="lazy"><figcaption>02 <span>THE FINE DETAILS</span> ↗</figcaption></figure>
+        <figure class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=85" alt="Traditional barber tools and chair" loading="lazy"><figcaption>03 <span>THE RITUAL</span> ↗</figcaption></figure>
+      </div>
+      <div class="gallery-caption">Selected inspiration photography for a fictional portfolio brand. Not actual work by a real salon.</div>
+    </section>
+
+    <section class="section reviews" id="reviews"><div class="section-kicker reveal"><span class="kicker-number">04 /</span> THE EXPERIENCE</div>
+      <div class="reviews-layout"><div class="reviews-heading reveal"><div class="stars" aria-label="Five star visual">★★★★★</div><h2>THE WORD<br>GETS <em>AROUND.</em></h2><p>Because the best experience is the one people remember.</p><small>Concept testimonials shown for layout demonstration only.</small></div><div class="review-card reveal"><div class="quote-glyph">“</div><blockquote id="quote-text">Not just a haircut — the whole experience feels different. Clean, considered, and absolutely worth it.</blockquote><div class="review-bottom"><div><strong id="quote-name">ALEX M.</strong><span>DEMO TESTIMONIAL</span></div><div class="review-controls"><button id="prev-review" aria-label="Previous testimonial">←</button><button id="next-review" aria-label="Next testimonial">→</button></div></div></div></div>
+    </section>
+
+    <section class="section booking-section" id="booking"><div class="booking-panel reveal"><div class="booking-panel-info"><div class="section-kicker"><span class="kicker-number">05 /</span> YOUR NEXT MOVE</div><h2>GOOD HAIR<br>STARTS <em>HERE.</em></h2><p>Thirty minutes in the chair. A whole new level of confidence out the door.</p><button class="button button-light magnetic open-booking" type="button">BOOK YOUR SEAT <span aria-hidden="true">↗</span></button><span class="booking-under">TRY OUR INTERACTIVE BOOKING DEMO — NO REAL RESERVATION</span></div><div class="booking-decoration" aria-hidden="true"><span>N</span><div class="decoration-ring"></div></div></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-top"><div><div class="footer-logo">NOIR<span>.</span></div><p>A better cut. A better day.<br>A different kind of barber studio.</p></div><div><span class="footer-kicker">EXPLORE</span><a href="#about">About</a><a href="#services">Services</a><a href="#work">Lookbook</a><a href="#booking">Booking demo</a></div><div><span class="footer-kicker">THE DETAILS</span><span>Fictional location</span><span>Concept hours: Tue–Sat, 10–19</span><span>hello@example.com (placeholder)</span></div></div><div class="footer-bottom"><span>© 2026 NOIR BARBER STUDIO — PORTFOLIO CONCEPT</span><span>DESIGNED TO MAKE AN IMPRESSION <b>✳</b></span><a href="#home">BACK TO TOP ↑</a></div></footer>
+
+  <dialog class="booking-modal" id="booking-modal" aria-labelledby="booking-title"><div class="modal-content"><button id="close-booking" class="modal-close" type="button" aria-label="Close booking">✕</button><div class="modal-kicker">NOIR / THE BOOKING EXPERIENCE</div><h2 id="booking-title">YOUR NEXT <em>GREAT CUT.</em></h2><p class="modal-intro">This is an interactive concept demo. No appointment will be submitted or stored.</p><form id="booking-form"><div class="booking-fields"><label>SERVICE<select name="service" id="booking-service" required><option value="signature">The Signature Cut — €35</option><option value="beard">Beard Sculpt — €20</option><option value="combo">The Full Experience — €50</option><option value="refresh">The Quick Refresh — €25</option></select></label><label>BARBER<select name="barber" required><option value="First available">First available</option><option value="Alex">Alex (demo)</option><option value="Jordan">Jordan (demo)</option></select></label><label>DATE<input type="date" id="booking-date" name="date" required></label><label>YOUR NAME<input name="name" placeholder="Your name" autocomplete="name" maxlength="80" required></label></div><div class="time-title">CHOOSE YOUR TIME</div><div class="time-grid" id="time-grid" role="group" aria-label="Choose a time slot"><button type="button" class="time-slot" data-time="10:00">10:00</button><button type="button" class="time-slot" data-time="11:30">11:30</button><button type="button" class="time-slot" data-time="13:00">13:00</button><button type="button" class="time-slot" data-time="14:30">14:30</button><button type="button" class="time-slot" data-time="16:00">16:00</button><button type="button" class="time-slot" data-time="17:30">17:30</button></div><input type="hidden" name="time" id="booking-time" required><p class="form-error" id="form-error" role="alert"></p><button class="button button-accent button-submit" type="submit">PREVIEW RESERVATION <span>↗</span></button></form><div id="booking-success" class="booking-success" hidden><span class="success-symbol">✓</span><h3>LOOKING SHARP.</h3><p id="booking-summary"></p><div class="demo-warning">DEMO ONLY — Nothing has been booked or sent.</div><button class="button button-accent" id="book-another" type="button">TRY ANOTHER BOOKING ↗</button></div></div></dialog>
+</body>
+</html>
