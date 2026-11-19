@@ -1,42 +1,62 @@
-# NOIR Barber Studio — Premium demo website
+# NOIR Barber Studio — Portfolio Website + Booking & Admin Demo (v3)
 
-**Portfolio concept only.** A fictional barber brand for demonstrating frontend design. No real salon, testimonials, pricing, address, or appointments are implied.
+A fictional, premium barber-studio website designed as a portfolio demonstration. NOIR is not a real barbershop. Photographs are inspiration images, and sample testimonials, services, prices and staff are fictitious.
 
-## What's inside
+## What's included
 
-- Responsive editorial one-page website, desktop/tablet/mobile
-- Smooth scroll and reveal animations, custom cursor glow, magnetic buttons, marquee
-- Services, lookbook, demo testimonials, interactive booking modal
-- Booking form intentionally **does not send or save data**
-- Zero build step. HTML + CSS + vanilla JavaScript; works with GitHub Pages
+- `index.html` — premium responsive public website (services, gallery, reviews, opening hours, booking flow)
+- `styles.css` — public website styles and visual animations
+- `app.js` — interactive booking modal, live time-slot selection, paper airplane-to-NOIR-envelope delivery animation
+- `admin.html` — styled studio-owner dashboard
+- `admin.css` / `admin.js` — dashboard, appointment statuses, search, sample data, 7-day agenda, CSV export and weekly hours editor
+- `studio-store.js` — **browser-only demo data layer** for appointments, opening hours, barber availability, validation and booking conflicts
+- `assets/favicon.svg`
 
-## Local preview
+## IMPORTANT: no real backend or email
 
-Open `index.html` in a browser (internet access is required to display photography and Google Fonts), or use a local server:
+**This is a portfolio demo, not a production booking system.** Both pages save data to the same browser's `localStorage`, scoped to the same domain and browser profile. That allows you to demonstrate a complete user booking journey and see it appear in the admin dashboard **on that browser only**. If someone else opens the public site on their phone, their demo appointments are **not** visible on your computer. The envelope/paper airplane animation is visual; **it does not send an email**.
 
-```bash
-python -m http.server 8000
-```
+The admin demo has **no authentication**. It is deliberately publicly accessible for demonstration. Never ask real clients to enter real personal details on this version. Use **fictional names only**. Do not present this as a working secure admin dashboard for a real business.
 
-Open http://localhost:8000
+A real deployment for clients requires a protected backend/database (e.g., Supabase, Firebase or a booking SaaS), server-side slot conflict prevention, authenticated admin authorization, email/phone notification integrations, spam protection, GDPR/privacy handling and appropriate uptime/backup arrangements. A password or secret hidden in browser JS **is not sufficient security**.
 
-## Deploy to GitHub Pages
+## How to try the demo
 
-1. Create a GitHub repository, e.g. `noir-barber-demo`.
-2. Upload `index.html`, `styles.css`, `app.js` and the `assets/` folder into the repository root.
-3. In repository **Settings → Pages**, select **Deploy from a branch**, `main`, `/ (root)` and save.
-4. GitHub will provide a temporary `USERNAME.github.io/noir-barber-demo/` address.
-5. To connect a custom domain or subdomain, first add it to the repository's **Settings → Pages → Custom domain**. For a subdomain such as `barber.example.com`, at the domain registrar add a DNS **CNAME** for `barber` pointing to `USERNAME.github.io` (replace username). DNS propagation and certificate issuance can take time; enable **Enforce HTTPS** once available.
-6. Verify domain ownership through GitHub account **Settings → Pages**, using the TXT record they provide, especially before adding extra subdomains.
+1. Unzip the project to one folder.
+2. In that folder start a small local server (recommended for consistent browser storage):
 
-See official docs: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+   ```bash
+   python -m http.server 8000
+   ```
+3. In one browser/profile open `http://localhost:8000/index.html`.
+4. Click **BOOK YOUR EXPERIENCE**, choose a service/barber/date/time, enter a *fictional* guest name, and click **BOOK NOW — WATCH IT FLY**. The envelope animation plays.
+5. Open `http://localhost:8000/admin.html` in the **same browser/profile**. You'll see the new demo booking; update its status if you like.
+6. Change the hours under **OPENING HOURS**, click **SAVE HOURS**, and return to/reload the public page. The hours list and available booking times adapt.
+7. For a populated dashboard without manual booking, click **+ ADD SAMPLE DATA**. Example bookings use fictional names. You can also export CSV or clear demo bookings.
 
-## What to replace before serving a real client
+The site uses HTML, CSS and vanilla JS; no npm or build step is needed. Google Fonts and Unsplash photos require internet access.
 
-- Fictional brand NOIR, concept badge, placeholder copy, testimonials, prices, location and contacts
-- External Unsplash photography with **real client images** where possible; third-party photo and font loading requires internet
-- Demo form with actual reservation provider/backend, data protection, spam protection and email notifications
-- Proper privacy/legal details for the target country
-- Performance/SEO/analytics setup and content verification
+## Scheduling demo rules
 
-No genuine appointments are created or stored. No data is sent by the booking form.
+- Default open days: Tuesday–Saturday, 10:00–19:00. Sunday/Monday closed.
+- Admin can set separate open/closed status and hours for each day.
+- Guests can book up to 60 days ahead, at 30-minute slot increments with at least 30 minutes' notice on the current day.
+- Two fictional barbers: Alex and Jordan. “First available” chooses one with room for the full service duration.
+- Services are 30–75 minutes; the demo blocks overlapping time slots for the same barber.
+- Pending and Confirmed bookings reserve time. Completed and Cancelled bookings do not.
+- Hours edits do not retroactively cancel or relocate existing demo appointments.
+- Browser storage can be cleared by browser settings, private browsing, or the dashboard's Clear button.
+
+## GitHub Pages / custom domain
+
+1. Create a GitHub repository and upload `index.html`, `styles.css`, `app.js`, `admin.html`, `admin.css`, `admin.js`, `studio-store.js`, `assets/` and this README to its root.
+2. Repository **Settings → Pages → Deploy from a branch → main / (root)**.
+3. Your `USERNAME.github.io/REPO/` preview site will work as a *public portfolio demo*.
+4. Optionally configure a custom domain in **Settings → Pages → Custom domain** and set appropriate DNS records at the registrar. Add domain verification and enable HTTPS when available.
+5. `admin.html` is **not secure** and will be publicly accessible in the repository. It can safely demonstrate fake data, but do not use it to manage real bookings as-is.
+
+Official GitHub documentation: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+
+## Next step for actual client delivery
+
+Replace the browser-only `studio-store.js` with a secure, centralized booking API and real authentication. Keep the public UI and admin design. Configure actual studio hours, staff, service durations, business info, real photos, customer contact collection, privacy notice and a verified notification provider.

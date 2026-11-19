@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="studio-store.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -21,11 +22,11 @@
   <header class="site-header" id="site-header">
     <a class="brand" href="#home" aria-label="NOIR Barber Studio — homepage"><span class="brand-symbol">N<span>.</span></span><span class="brand-name">NOIR <small>BARBER STUDIO</small></span></a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#about">The studio</a><a href="#services">Services</a><a href="#work">Our work</a><a href="#reviews">Reviews</a>
+      <a href="#about">The studio</a><a href="#services">Services</a><a href="#work">Our work</a><a href="#reviews">Reviews</a><a href="#hours">Opening hours</a>
     </nav>
     <div class="header-actions"><a class="nav-book magnetic" href="#booking">BOOK A SEAT <span aria-hidden="true">↗</span></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button></div>
   </header>
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#about">The studio</a><a href="#services">Services</a><a href="#work">Our work</a><a href="#reviews">Reviews</a><a href="#booking">Book a seat ↗</a></nav>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#about">The studio</a><a href="#services">Services</a><a href="#work">Our work</a><a href="#reviews">Reviews</a><a href="#hours">Opening hours</a><a href="#hours">Opening hours</a><a href="#booking">Book a seat ↗</a></nav>
 
   <main>
     <section class="hero" id="home">
@@ -81,11 +82,70 @@
       <div class="reviews-layout"><div class="reviews-heading reveal"><div class="stars" aria-label="Five star visual">★★★★★</div><h2>THE WORD<br>GETS <em>AROUND.</em></h2><p>Because the best experience is the one people remember.</p><small>Concept testimonials shown for layout demonstration only.</small></div><div class="review-card reveal"><div class="quote-glyph">“</div><blockquote id="quote-text">Not just a haircut — the whole experience feels different. Clean, considered, and absolutely worth it.</blockquote><div class="review-bottom"><div><strong id="quote-name">ALEX M.</strong><span>DEMO TESTIMONIAL</span></div><div class="review-controls"><button id="prev-review" aria-label="Previous testimonial">←</button><button id="next-review" aria-label="Next testimonial">→</button></div></div></div></div>
     </section>
 
-    <section class="section booking-section" id="booking"><div class="booking-panel reveal"><div class="booking-panel-info"><div class="section-kicker"><span class="kicker-number">05 /</span> YOUR NEXT MOVE</div><h2>GOOD HAIR<br>STARTS <em>HERE.</em></h2><p>Thirty minutes in the chair. A whole new level of confidence out the door.</p><button class="button button-light magnetic open-booking" type="button">BOOK YOUR SEAT <span aria-hidden="true">↗</span></button><span class="booking-under">TRY OUR INTERACTIVE BOOKING DEMO — NO REAL RESERVATION</span></div><div class="booking-decoration" aria-hidden="true"><span>N</span><div class="decoration-ring"></div></div></div></section>
+
+    <section class="section hours-section" id="hours" aria-labelledby="hours-heading">
+      <div class="section-kicker reveal"><span class="kicker-number">05 /</span> THE RIGHT TIME</div>
+      <div class="hours-layout">
+        <div class="hours-copy reveal">
+          <div class="hours-overline">YOUR TIME IS VALUABLE. SO IS OURS.</div>
+          <h2 id="hours-heading">THE STUDIO<br>IS <em>OPEN.</em></h2>
+          <p>Early birds, last-minute touch-ups, or your regular Saturday ritual. Find the right moment for your next appointment.</p>
+          <div class="hours-status" id="hours-status" aria-live="polite"><span class="status-orb"></span><span>Checking today's studio hours…</span></div>
+          <button class="button button-accent open-booking" type="button">FIND YOUR SLOT <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="hours-card reveal">
+          <div class="hours-card-top"><span>NOIR / WEEKLY SCHEDULE</span><span>✳</span></div>
+          <div id="public-hours-list" class="hours-rows" aria-label="Weekly opening hours"></div>
+          <div class="hours-card-foot"><span>Hours may change. Available times are shown when booking.</span><span>EST. 2026</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking-section" id="booking"><div class="booking-panel reveal"><div class="booking-panel-info"><div class="section-kicker"><span class="kicker-number">06 /</span> YOUR NEXT MOVE</div><h2>GOOD HAIR<br>STARTS <em>HERE.</em></h2><p>Thirty minutes in the chair. A whole new level of confidence out the door.</p><button class="button button-light magnetic open-booking" type="button">BOOK YOUR SEAT <span aria-hidden="true">↗</span></button><span class="booking-under">TRY OUR INTERACTIVE BOOKING DEMO — NO REAL RESERVATION</span></div><div class="booking-decoration" aria-hidden="true"><span>N</span><div class="decoration-ring"></div></div></div></section>
   </main>
 
-  <footer class="site-footer"><div class="footer-top"><div><div class="footer-logo">NOIR<span>.</span></div><p>A better cut. A better day.<br>A different kind of barber studio.</p></div><div><span class="footer-kicker">EXPLORE</span><a href="#about">About</a><a href="#services">Services</a><a href="#work">Lookbook</a><a href="#booking">Booking demo</a></div><div><span class="footer-kicker">THE DETAILS</span><span>Fictional location</span><span>Concept hours: Tue–Sat, 10–19</span><span>hello@example.com (placeholder)</span></div></div><div class="footer-bottom"><span>© 2026 NOIR BARBER STUDIO — PORTFOLIO CONCEPT</span><span>DESIGNED TO MAKE AN IMPRESSION <b>✳</b></span><a href="#home">BACK TO TOP ↑</a></div></footer>
+  <footer class="site-footer"><div class="footer-top"><div><div class="footer-logo">NOIR<span>.</span></div><p>A better cut. A better day.<br>A different kind of barber studio.</p></div><div><span class="footer-kicker">EXPLORE</span><a href="#about">About</a><a href="#services">Services</a><a href="#work">Lookbook</a><a href="#booking">Booking demo</a></div><div><span class="footer-kicker">THE DETAILS</span><span>Fictional location</span><a href="#hours">View opening hours ↗</a><span>hello@example.com (placeholder)</span><a href="admin.html">Admin dashboard demo ↗</a></div></div><div class="footer-bottom"><span>© 2026 NOIR BARBER STUDIO — PORTFOLIO CONCEPT</span><span>DESIGNED TO MAKE AN IMPRESSION <b>✳</b></span><a href="#home">BACK TO TOP ↑</a></div></footer>
 
-  <dialog class="booking-modal" id="booking-modal" aria-labelledby="booking-title"><div class="modal-content"><button id="close-booking" class="modal-close" type="button" aria-label="Close booking">✕</button><div class="modal-kicker">NOIR / THE BOOKING EXPERIENCE</div><h2 id="booking-title">YOUR NEXT <em>GREAT CUT.</em></h2><p class="modal-intro">This is an interactive concept demo. No appointment will be submitted or stored.</p><form id="booking-form"><div class="booking-fields"><label>SERVICE<select name="service" id="booking-service" required><option value="signature">The Signature Cut — €35</option><option value="beard">Beard Sculpt — €20</option><option value="combo">The Full Experience — €50</option><option value="refresh">The Quick Refresh — €25</option></select></label><label>BARBER<select name="barber" required><option value="First available">First available</option><option value="Alex">Alex (demo)</option><option value="Jordan">Jordan (demo)</option></select></label><label>DATE<input type="date" id="booking-date" name="date" required></label><label>YOUR NAME<input name="name" placeholder="Your name" autocomplete="name" maxlength="80" required></label></div><div class="time-title">CHOOSE YOUR TIME</div><div class="time-grid" id="time-grid" role="group" aria-label="Choose a time slot"><button type="button" class="time-slot" data-time="10:00">10:00</button><button type="button" class="time-slot" data-time="11:30">11:30</button><button type="button" class="time-slot" data-time="13:00">13:00</button><button type="button" class="time-slot" data-time="14:30">14:30</button><button type="button" class="time-slot" data-time="16:00">16:00</button><button type="button" class="time-slot" data-time="17:30">17:30</button></div><input type="hidden" name="time" id="booking-time" required><p class="form-error" id="form-error" role="alert"></p><button class="button button-accent button-submit" type="submit">PREVIEW RESERVATION <span>↗</span></button></form><div id="booking-success" class="booking-success" hidden><span class="success-symbol">✓</span><h3>LOOKING SHARP.</h3><p id="booking-summary"></p><div class="demo-warning">DEMO ONLY — Nothing has been booked or sent.</div><button class="button button-accent" id="book-another" type="button">TRY ANOTHER BOOKING ↗</button></div></div></dialog>
+  <dialog class="booking-modal" id="booking-modal" aria-labelledby="booking-title"><div class="modal-content"><button id="close-booking" class="modal-close" type="button" aria-label="Close booking">✕</button><div class="modal-kicker"><span class="kicker-glint" aria-hidden="true">✳</span> NOIR / THE BOOKING EXPERIENCE</div><h2 id="booking-title">YOUR NEXT <em>GREAT CUT.</em></h2><p class="modal-intro">Choose your details, then watch your booking take flight. <strong>Demo booking saved only in this browser — no email is sent.</strong> Please use a fictional name.</p><form id="booking-form"><div class="booking-fields"><label>SERVICE<select name="service" id="booking-service" required><option value="signature">The Signature Cut — €35</option><option value="beard">Beard Sculpt — €20</option><option value="combo">The Full Experience — €50</option><option value="refresh">The Quick Refresh — €25</option></select></label><label>BARBER<select name="barber" required><option value="First available">First available</option><option value="Alex">Alex (demo)</option><option value="Jordan">Jordan (demo)</option></select></label><label>DATE<input type="date" id="booking-date" name="date" required></label><label>DEMO NAME<input name="name" placeholder="e.g. Alex Example" autocomplete="off" minlength="2" maxlength="80" required></label></div><div class="time-title">CHOOSE YOUR TIME</div><div class="time-grid" id="time-grid" role="group" aria-label="Choose an available time slot"></div><div class="time-note" id="time-note" aria-live="polite"></div><input type="hidden" name="time" id="booking-time" required><p class="form-error" id="form-error" role="alert"></p><button class="button button-accent button-submit" type="submit"><span>BOOK NOW — WATCH IT FLY</span><svg class="submit-plane" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path d="M3 15 29 4 19 28l-5-9-11-4Zm11 4L29 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></svg></button></form><div id="booking-success" class="booking-success" hidden>
+    <div class="delivery-topline"><span class="delivery-dot"></span> FLIGHT 001 <span class="delivery-topline-right">NOIR / BOOKING CONCEPT</span></div>
+    <div class="delivery-heading"><h3 id="delivery-title">TAKING <em>FLIGHT.</em></h3><p id="delivery-status">Your demo request is flying to the NOIR inbox.</p></div>
+    <div class="flight-scene" id="flight-scene" aria-hidden="true">
+      <svg class="flight-art" viewBox="0 0 640 310" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="plane-gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffedcf"/><stop offset=".56" stop-color="#dab07e"/><stop offset="1" stop-color="#a87947"/></linearGradient>
+          <linearGradient id="envelope-gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edcca2"/><stop offset=".5" stop-color="#caa073"/><stop offset="1" stop-color="#a97849"/></linearGradient>
+          <linearGradient id="mail-shade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#20271f"/><stop offset="1" stop-color="#111811"/></linearGradient>
+          <radialGradient id="mail-halo"><stop stop-color="#cfa06d" stop-opacity=".24"/><stop offset="1" stop-color="#cfa06d" stop-opacity="0"/></radialGradient>
+          <filter id="glow-blur"><feGaussianBlur stdDeviation="12"/></filter>
+        </defs>
+        <circle class="flight-halo" cx="472" cy="194" r="140" fill="url(#mail-halo)" />
+        <g class="flight-stars" fill="#b89263"><circle cx="72" cy="76" r="2"/><circle cx="207" cy="53" r="1.5"/><circle cx="328" cy="228" r="1.6"/><circle cx="588" cy="66" r="2"/><circle cx="600" cy="260" r="1.5"/></g>
+        <path class="flight-trail" d="M76 249 C154 267 211 72 336 99 S427 137 467 190" fill="none" stroke="#e2b889" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 10" opacity=".9"/>
+        <g class="flight-plane">
+          <path d="M-25 6 34 -18 6 30 -5 10Z" fill="url(#plane-gold)" stroke="#ffedcf" stroke-width="1.2" stroke-linejoin="round" />
+          <path d="M-5 10 34 -18 7 16" fill="none" stroke="#75512e" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M-5 10 6 30 7 16" fill="#b68752" opacity=".9" />
+        </g>
+        <g class="mail-envelope">
+          <rect x="388" y="156" width="177" height="117" rx="10" fill="#080c09" opacity=".24" transform="translate(3 10)" filter="url(#glow-blur)"/>
+          <rect x="381" y="149" width="186" height="122" rx="10" fill="url(#envelope-gold)"/>
+          <path d="M386 154 471 219 562 154" fill="none" stroke="#775330" stroke-width="2" stroke-linecap="round" />
+          <path d="M389 264 444 214M559 264 501 214" stroke="#92653e" stroke-width="1.2" opacity=".66" />
+          <path d="M385 265 456 208Q472 219 486 208L563 265" fill="#ad8055" fill-opacity=".38"/>
+          <g class="envelope-seal">
+            <circle cx="471" cy="211" r="33" fill="url(#mail-shade)" stroke="#eed0a3" stroke-width="1.5"/>
+            <circle cx="471" cy="211" r="28" fill="none" stroke="#b28b5e" stroke-width=".5" opacity=".8" />
+            <text x="471" y="219" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="24" fill="#f1dbc0">N<tspan fill="#cc9c65">.</tspan></text>
+          </g>
+          <text x="472" y="285" text-anchor="middle" font-family="Arial,sans-serif" letter-spacing="4" font-size="9" fill="#a99f91">NOIR INBOX</text>
+        </g>
+        <g class="mail-received"><circle cx="548" cy="156" r="20" fill="#d9b17c"/><path d="m539 156 6 6 12-14" fill="none" stroke="#192019" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+      </svg>
+      <div class="flight-bottom"><span>CRAFTED WITH CARE <b>✳</b></span><span>DELIVERY SIMULATION / 00:03</span></div>
+    </div>
+    <div id="delivery-complete" class="delivery-complete" hidden><div class="landing-mark">✦ <span>BOOKING STORED IN THIS BROWSER</span> ✦</div><p id="booking-summary"></p></div>
+    <div class="demo-warning"><strong>PORTFOLIO DEMO.</strong> This booking appears in the admin demo on this browser only. No email is sent, and it is not visible on other devices. <a href="admin.html">Open admin dashboard ↗</a></div>
+    <button class="button button-accent retry-button" id="book-another" type="button">BOOK ANOTHER SEAT <span aria-hidden="true">↗</span></button>
+  </div></div></dialog>
 </body>
 </html>
